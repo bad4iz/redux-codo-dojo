@@ -10,6 +10,19 @@ function updateState(state, action) {
     }
 }
 
+class Store {
+    constructor(updateState, state) {
+        this._updateState = updateState;
+        this._state = state;
+    }
+    
+    update(action) {
+        this._state = this._updateState(this._state, action);
+    }
+}
+
+const store = new Store(updateState, 0);
+
 const incrementAction = { type: 'INCREMENT', amount: 5};
 const decrementAction = { type: 'DECREMENT', amount: 44};
 
