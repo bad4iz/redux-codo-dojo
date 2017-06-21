@@ -42,9 +42,11 @@ class App extends Component {
     increment = () => {
         store.update(incrementAction);
     };
+    
     decrement = () => {
         store.update(decrementAction);
     };
+    
     reset = () => {
         store.update(resetAction);
     };
