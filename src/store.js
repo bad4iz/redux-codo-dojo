@@ -1,13 +1,3 @@
-// function updateState(state, action) {
-//     if (action.type === 'INCREMENT') {
-//         return { count: state.count + action.amount};
-//     } else if (action.type === 'DECREMENT') {
-//         return { count: state.count - action.amount};
-//     } else {
-//         return state;
-//     }
-// }
-
 class Store {
     constructor(updateState, state) {
         this._updateState = updateState;
@@ -30,18 +20,3 @@ class Store {
     }
 }
 export default Store;
-
-// initialState = { count: 0};
-//    
-// const store = new Store(updateState, initialState);
-//
-// const incrementAction = { type: 'INCREMENT', amount: 5};
-// const decrementAction = { type: 'DECREMENT', amount: 44};
-//
-// const unsubscribe = store.subscribe(() => console.log('State changed 1', store.state));
-// const unsubscribe2 = store.subscribe(() => console.log('State changed 2', store.state));
-//
-// store.update(incrementAction);
-// store.update(decrementAction);
-// unsubscribe();
-// store.update({ type: 'INC', amount: 6});
