@@ -34,7 +34,7 @@ class App extends Component {
         
         this.state = { count: 0 };
     }
-    
+     
     componentDidMount() {
         store.subscribe(()=> this.forceUpdate());
     }
@@ -42,9 +42,11 @@ class App extends Component {
     increment = () => {
         store.update(incrementAction);
     };
+    
     decrement = () => {
         store.update(decrementAction);
     };
+    
     reset = () => {
         store.update(resetAction);
     };
@@ -52,6 +54,7 @@ class App extends Component {
     render() {
         return (
             <div className="counter">
+                
                 <span className="count">{store.state.count}</span>
                 
                 <div className="buttons">
@@ -59,6 +62,7 @@ class App extends Component {
                     <button className="decrement" onClick={this.reset}> reset </button>
                     <button className="increment" onClick={this.increment}> + </button>
                 </div>
+                
             </div>
         );
     }
