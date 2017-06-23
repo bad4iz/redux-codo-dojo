@@ -1,3 +1,18 @@
-/**
- * Created by bad4iz on 22.06.2017.
- */
+export function createStore(reducer, initialState) {
+    let state = initialState;
+    const callbacks = [];
+    
+    const getState = () => state;
+    
+    const dispatch = (action) => {
+        state = reducer(state, action);
+        callbacks.forEach(callback => callback());
+    };
+    
+    const subsribe = (callback) => {
+        callbacks.push(callback);
+        return () => callbacks.filter(cb => cb != callback);
+    };
+    
+    return {getState, dispatch, subsribe};
+}
