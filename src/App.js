@@ -3,7 +3,7 @@ import {createStore} from './redux';
 
 const initialState = { count: 0};
 
-function reducer(state, action) {
+function reducer(state, action) { 
     switch (action.type) {
         case 'INCREMENT': {
             return {count: state.count + action.amount};
