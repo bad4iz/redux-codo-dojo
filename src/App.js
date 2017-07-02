@@ -21,9 +21,15 @@ function reducer(state={count: 0}, action) {
     }
 }
 
-const incrementAction = { type: 'INCREMENT', amount: 1};
-const decrementAction = { type: 'DECREMENT', amount: 1};
-const resetAction = { type: 'RESET'};
+const increment = (amount) => {
+    return { type: 'INCREMENT', amount};
+};
+const decrement = (amount) => {
+    return { type: 'DECREMENT', amount};
+};
+const reset = () => {
+    return { type: 'RESET'};
+};
 
 const store = createStore(reducer, initialState);
 
@@ -41,15 +47,17 @@ class App extends Component {
     }
     
     increment = () => {
-        store.dispatch(incrementAction);
+        let amount = parseInt(this.refs.amount.value || 1);
+        store.dispatch(increment(amount));
     };
-    
+
     decrement = () => {
-        store.dispatch(decrementAction);
+        let amount = parseInt(this.refs.amount.value || 1);
+        store.dispatch(decrement(amount));
     };
     
     reset = () => {
-        store.dispatch(resetAction);
+        store.dispatch(reset());
     };
     
     render() {
@@ -64,7 +72,7 @@ class App extends Component {
                     <button className="decrement" onClick={this.reset}> reset </button>
                     <button className="increment" onClick={this.increment}> + </button>
                 </div>
-                
+                <input type="text" ref="amount" defaultValue="1" />
             </div>
         );
     }
