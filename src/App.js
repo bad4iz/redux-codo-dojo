@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {createStore} from './redux';
+import {createStore} from 'redux';
 
 const initialState = { count: 0};
 
-function reducer(state, action) { 
+function reducer(state={count: 0}, action) {
     switch (action.type) {
         case 'INCREMENT': {
             return {count: state.count + action.amount};
@@ -27,6 +27,7 @@ const resetAction = { type: 'RESET'};
 
 const store = createStore(reducer, initialState);
 
+console.log(store);
 class App extends Component {
     
     constructor(props) {
@@ -36,7 +37,7 @@ class App extends Component {
     }
      
     componentDidMount() {
-        store.subsribe(()=> this.forceUpdate());
+        store.subscribe(()=> this.forceUpdate());
     }
     
     increment = () => {
